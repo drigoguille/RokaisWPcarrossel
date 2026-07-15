@@ -53,12 +53,15 @@ define( 'SKPC_GITHUB_TOKEN', 'ghp_seu_token_aqui' );
 
 ## Desligar a atualização automática em um site específico
 
-A atualização automática vem **ligada**. Para deixar apenas o aviso (o cliente
-clica em "Atualizar" manualmente), adicione no `wp-config.php` do site:
+A atualização automática vem **ligada por padrão**. Há duas formas de desligar:
 
-```php
-define( 'SKPC_AUTO_UPDATE', false );
-```
+1. **Pela interface (recomendado):** na tela **Plugins**, na coluna de
+   atualizações automáticas do "Rokais Carrossel WP", clique em
+   **"Desativar atualizações automáticas"**. O cliente mesmo pode fazer isso.
+2. **Forçado via código** (sem alternador na UI), no `wp-config.php` do site:
+   ```php
+   define( 'SKPC_AUTO_UPDATE', false );
+   ```
 
 ## Recomendação
 

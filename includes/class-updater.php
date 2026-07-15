@@ -107,14 +107,14 @@ class Updater {
 		add_filter( 'upgrader_source_selection', array( $this, 'fix_source_dir' ), 10, 4 );
 		add_action( 'upgrader_process_complete', array( $this, 'purge_cache' ), 10, 2 );
 
-		$auto = defined( 'SKPC_AUTO_UPDATE' ) ? (bool) SKPC_AUTO_UPDATE : true;
-		/**
-		 * Habilita/desabilita a atualização automática silenciosa deste plugin.
-		 *
-		 * @param bool $auto Estado padrão (constante SKPC_AUTO_UPDATE ou true).
-		 */
-		if ( apply_filters( 'skpc_enable_auto_updates', $auto ) ) {
-			add_filter( 'auto_update_plugin', array( $this, 'auto_update' ), 10, 2 );
+		if ( defined( 'SKPC_AUTO_UPDATE' ) && false === SKPC_AUTO_UPDATE ) {
+			// Desligado explicitamente via constante: força OFF (sem alternador na UI).
+			add_filter( 'auto_update_plugin', array( $this, 'force_disable' ), 10, 2 );
+		} else {
+			// Padrão: liga a atualização automática UMA vez, pela option que o próprio
+			// WordPress gerencia — assim o botão "Desativar atualizações automáticas"
+			// continua aparecendo na tela de Plugins e o cliente pode desligar.
+			add_action( 'admin_init', array( $this, 'seed_auto_update' ) );
 		}
 	}
 
@@ -204,17 +204,39 @@ class Updater {
 	}
 
 	/**
-	 * Força a atualização automática deste plugin.
+	 * Força DESLIGAR a atualização automática (usado quando SKPC_AUTO_UPDATE=false).
 	 *
 	 * @param bool|null $update Decisão atual.
 	 * @param object    $item   Item do plugin.
 	 * @return bool|null
 	 */
-	public function auto_update( $update, $item ) {
+	public function force_disable( $update, $item ) {
 		if ( is_object( $item ) && isset( $item->plugin ) && $item->plugin === $this->basename ) {
-			return true;
+			return false;
 		}
 		return $update;
+	}
+
+	/**
+	 * Liga a atualização automática por padrão (uma única vez por site),
+	 * registrando o plugin na option 'auto_update_plugins' gerida pela UI.
+	 * O cliente pode desligar depois pelo botão da tela de Plugins.
+	 *
+	 * @return void
+	 */
+	public function seed_auto_update() {
+		if ( get_option( 'skpc_autoupdate_seeded' ) ) {
+			return;
+		}
+		$enabled = get_option( 'auto_update_plugins', array() );
+		if ( ! is_array( $enabled ) ) {
+			$enabled = array();
+		}
+		if ( ! in_array( $this->basename, $enabled, true ) ) {
+			$enabled[] = $this->basename;
+			update_option( 'auto_update_plugins', $enabled );
+		}
+		update_option( 'skpc_autoupdate_seeded', 1 );
 	}
 
 	/**

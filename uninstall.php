@@ -31,6 +31,7 @@ function skpc_uninstall_site() {
 	delete_option( 'skpc_connections' );
 	delete_option( 'skpc_credentials' );
 	delete_option( 'skpc_version' );
+	delete_option( 'skpc_autoupdate_seeded' );
 
 	// Options de dado durável do cache (skpc_data_*).
 	$data_options = $wpdb->get_col(

@@ -43,7 +43,7 @@ class Admin_Menu {
 			self::CAP,
 			self::SLUG,
 			array( $this, 'render_router' ),
-			SKPC_ASSETS_URL . 'img/menu-icon.png',
+			$this->menu_icon(),
 			58
 		);
 
@@ -64,6 +64,20 @@ class Admin_Menu {
 			'skpc-settings',
 			array( $this, 'render_settings' )
 		);
+	}
+
+	/**
+	 * Ícone do menu como SVG (data URI), que o WordPress dimensiona para 20px e
+	 * centraliza igual aos dashicons nativos. Fallback para um dashicon.
+	 *
+	 * @return string
+	 */
+	private function menu_icon() {
+		$svg = @file_get_contents( SKPC_PATH . 'assets/img/menu-icon.svg' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents, WordPress.PHP.NoSilencedErrors.Discouraged
+		if ( ! $svg ) {
+			return 'dashicons-images-alt2';
+		}
+		return 'data:image/svg+xml;base64,' . base64_encode( $svg ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 	}
 
 	/**
