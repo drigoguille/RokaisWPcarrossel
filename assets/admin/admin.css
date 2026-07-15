@@ -1,0 +1,116 @@
+/* Rokais Carrossel WP — estilos do admin */
+
+.skpc-logo-header {
+	margin: 12px 0 4px;
+}
+
+.skpc-logo {
+	height: 52px;
+	width: auto;
+	max-width: 100%;
+	display: block;
+}
+
+.skpc-admin .skpc-badge {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 10px;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 1.6;
+	color: #fff;
+}
+
+.skpc-badge--ok {
+	background: #1a7f37;
+}
+
+.skpc-badge--err {
+	background: #b32d2e;
+}
+
+.skpc-badge--neutral {
+	background: #646970;
+}
+
+.skpc-admin .skpc-id {
+	font-size: 11px;
+	color: #646970;
+	background: #f0f0f1;
+	padding: 1px 5px;
+	border-radius: 3px;
+}
+
+.skpc-admin .skpc-error-msg {
+	color: #b32d2e;
+}
+
+.skpc-form .skpc-group {
+	border-top: 1px solid #dcdcde;
+	margin-top: 8px;
+}
+
+.skpc-actions {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+.skpc-test-result {
+	margin-top: 12px;
+	max-width: 900px;
+}
+
+.skpc-preview {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 10px;
+}
+
+.skpc-preview__card {
+	position: relative;
+	width: 180px;
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	padding: 10px;
+	background: #fff;
+}
+
+.skpc-preview__card img {
+	width: 100%;
+	height: 110px;
+	object-fit: cover;
+	border-radius: 6px;
+	display: block;
+	margin-bottom: 8px;
+}
+
+.skpc-preview__card strong {
+	display: block;
+	font-size: 13px;
+	margin-bottom: 6px;
+}
+
+.skpc-preview__prices del {
+	color: #646970;
+	margin-right: 6px;
+}
+
+.skpc-preview__prices ins {
+	color: #b32d2e;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.skpc-preview__badge {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	background: #b32d2e;
+	color: #fff;
+	font-size: 11px;
+	font-weight: 700;
+	padding: 2px 6px;
+	border-radius: 4px;
+}

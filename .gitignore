@@ -1,0 +1,10 @@
+# Artefatos de build
+/dist/
+*.zip
+
+# Material de origem (arte) — não faz parte do plugin distribuído
+/ARQUIVOS EXTRAS/
+
+# Sistema operacional / editores
+Thumbs.db
+.DS_Store

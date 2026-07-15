@@ -1,0 +1,210 @@
+/*
+ * SK Carrossel de Preços — estilos do frontend.
+ * As cores/tamanhos vêm de CSS custom properties definidas por instância pelo
+ * Elementor ({{WRAPPER}}), com fallbacks aqui para renderizar sem configuração.
+ */
+
+.skpc-carousel {
+	--skpc-card-bg: #ffffff;
+	--skpc-card-radius: 10px;
+	--skpc-img-height: 200px;
+	--skpc-img-fit: cover;
+	--skpc-title-color: #1a1a1a;
+	--skpc-desc-color: #555555;
+	--skpc-price-color: #1a1a1a;
+	--skpc-full-color: #8a8a8a;
+	--skpc-sale-color: #b32d2e;
+	--skpc-badge-bg: #b32d2e;
+	--skpc-badge-color: #ffffff;
+	--skpc-nav-color: #1a1a1a;
+	--skpc-dot-color: #c9c9c9;
+	--skpc-dot-active: #1a1a1a;
+	--skpc-gap: 16px;
+
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+
+.skpc-carousel .swiper-wrapper {
+	box-sizing: border-box;
+}
+
+.skpc-slide {
+	height: auto;
+	box-sizing: border-box;
+}
+
+.skpc-card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background: var(--skpc-card-bg);
+	border-radius: var(--skpc-card-radius);
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+.skpc-card__link {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	color: inherit;
+	text-decoration: none;
+}
+
+.skpc-card__media {
+	position: relative;
+	margin: 0;
+	width: 100%;
+}
+
+.skpc-card__img {
+	display: block;
+	width: 100%;
+	height: var(--skpc-img-height);
+	object-fit: var(--skpc-img-fit);
+	aspect-ratio: 4 / 3;
+}
+
+.skpc-badge {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: var(--skpc-badge-bg);
+	color: var(--skpc-badge-color);
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1;
+	padding: 5px 8px;
+	border-radius: 6px;
+}
+
+.skpc-card__body {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding: 14px;
+	flex: 1 1 auto;
+}
+
+.skpc-card__title {
+	margin: 0;
+	color: var(--skpc-title-color);
+	font-size: 1rem;
+	line-height: 1.3;
+}
+
+.skpc-card__desc {
+	color: var(--skpc-desc-color);
+	font-size: 0.875rem;
+	line-height: 1.4;
+}
+
+.skpc-card__prices {
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: auto;
+	padding-top: 6px;
+}
+
+.skpc-price {
+	color: var(--skpc-price-color);
+	font-weight: 700;
+	font-size: 1.05rem;
+}
+
+.skpc-price--full {
+	color: var(--skpc-full-color);
+	font-weight: 400;
+	font-size: 0.9rem;
+	text-decoration: line-through;
+}
+
+.skpc-price--sale {
+	color: var(--skpc-sale-color);
+	text-decoration: none;
+	font-weight: 800;
+	font-size: 1.15rem;
+}
+
+/* Paginação (dots) */
+.skpc-carousel .swiper-pagination {
+	position: static;
+	margin-top: 12px;
+}
+
+.skpc-carousel .swiper-pagination-bullet {
+	background: var(--skpc-dot-color);
+	opacity: 1;
+}
+
+.skpc-carousel .swiper-pagination-bullet-active {
+	background: var(--skpc-dot-active);
+}
+
+/* Setas */
+.skpc-arrow {
+	position: absolute;
+	top: calc(var(--skpc-img-height) / 2);
+	transform: translateY(-50%);
+	z-index: 5;
+	width: 40px;
+	height: 40px;
+	border: none;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.9);
+	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+	color: var(--skpc-nav-color);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.skpc-arrow::before {
+	content: '';
+	width: 10px;
+	height: 10px;
+	border-top: 2px solid currentColor;
+	border-right: 2px solid currentColor;
+}
+
+.skpc-arrow--prev {
+	left: 8px;
+}
+
+.skpc-arrow--prev::before {
+	transform: rotate(-135deg);
+	margin-left: 4px;
+}
+
+.skpc-arrow--next {
+	right: 8px;
+}
+
+.skpc-arrow--next::before {
+	transform: rotate(45deg);
+	margin-right: 4px;
+}
+
+.skpc-arrow.swiper-button-disabled {
+	opacity: 0.35;
+	cursor: default;
+}
+
+/* Estado (carregando/vazio/aviso) */
+.skpc-status {
+	padding: 24px;
+	text-align: center;
+	color: var(--skpc-desc-color);
+	font-size: 0.95rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.skpc-carousel .swiper-wrapper {
+		transition-duration: 0ms !important;
+	}
+}

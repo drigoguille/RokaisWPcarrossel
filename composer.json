@@ -1,0 +1,23 @@
+{
+	"name": "skgrupo/sk-price-carousel",
+	"description": "Widget de carrossel de preços para o Elementor com fontes Google Sheets, JSON e MySQL.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=7.4"
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"wp-coding-standards/wpcs": "^3.0",
+		"phpcompatibility/phpcompatibility-wp": "^2.1"
+	},
+	"scripts": {
+		"lint": "phpcs --standard=WordPress --extensions=php .",
+		"lint:fix": "phpcbf --standard=WordPress --extensions=php ."
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
+}
