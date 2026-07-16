@@ -563,6 +563,25 @@ class Widget_Carousel extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'nav_bg',
+			array(
+				'label'       => __( 'Cor do fundo (círculo)', 'sk-price-carousel' ),
+				'type'        => Controls_Manager::COLOR,
+				'description' => __( 'Deixe vazio para setas sem círculo (estilo clean).', 'sk-price-carousel' ),
+				'selectors'   => array( '{{WRAPPER}}' => '--skpc-nav-bg: {{VALUE}};' ),
+			)
+		);
+		$this->add_responsive_control(
+			'nav_size',
+			array(
+				'label'     => __( 'Tamanho da seta', 'sk-price-carousel' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array( 'px' => array( 'min' => 20, 'max' => 64 ) ),
+				'default'   => array( 'size' => 34 ),
+				'selectors' => array( '{{WRAPPER}}' => '--skpc-nav-size: {{SIZE}}px;' ),
+			)
+		);
+		$this->add_control(
 			'dot_color',
 			array(
 				'label'     => __( 'Cor dos dots', 'sk-price-carousel' ),
@@ -615,8 +634,9 @@ class Widget_Carousel extends Widget_Base {
 
 		$slide_tpl = SKPC_PATH . 'templates/slide.php';
 		?>
+		<?php $show_arrows = ( 'yes' === $settings['show_arrows'] ); ?>
 		<div
-			class="skpc-carousel swiper"
+			class="skpc-carousel"
 			id="<?php echo esc_attr( $dom_id ); ?>"
 			data-skpc-instance="<?php echo esc_attr( $this->get_id() ); ?>"
 			data-skpc-source="<?php echo esc_attr( $mode ); ?>"
@@ -626,21 +646,28 @@ class Widget_Carousel extends Widget_Base {
 			data-skpc-limit="24"
 			data-skpc-settings="<?php echo esc_attr( wp_json_encode( $config ) ); ?>"
 		>
-			<div class="swiper-wrapper">
-				<?php
-				foreach ( $items as $item ) {
-					include $slide_tpl;
-				}
-				?>
+			<div class="skpc-nav-row">
+				<?php if ( $show_arrows ) : ?>
+					<button type="button" class="skpc-arrow skpc-arrow--prev" aria-label="<?php esc_attr_e( 'Anterior', 'sk-price-carousel' ); ?>"></button>
+				<?php endif; ?>
+
+				<div class="skpc-viewport swiper">
+					<div class="swiper-wrapper">
+						<?php
+						foreach ( $items as $item ) {
+							include $slide_tpl;
+						}
+						?>
+					</div>
+				</div>
+
+				<?php if ( $show_arrows ) : ?>
+					<button type="button" class="skpc-arrow skpc-arrow--next" aria-label="<?php esc_attr_e( 'Próximo', 'sk-price-carousel' ); ?>"></button>
+				<?php endif; ?>
 			</div>
 
 			<?php if ( 'yes' === $settings['show_dots'] ) : ?>
 				<div class="swiper-pagination skpc-pagination"></div>
-			<?php endif; ?>
-
-			<?php if ( 'yes' === $settings['show_arrows'] ) : ?>
-				<button type="button" class="skpc-arrow skpc-arrow--prev" aria-label="<?php esc_attr_e( 'Anterior', 'sk-price-carousel' ); ?>"></button>
-				<button type="button" class="skpc-arrow skpc-arrow--next" aria-label="<?php esc_attr_e( 'Próximo', 'sk-price-carousel' ); ?>"></button>
 			<?php endif; ?>
 
 			<div class="skpc-status" role="status" aria-live="polite" <?php echo empty( $items ) ? '' : 'hidden'; ?>>

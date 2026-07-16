@@ -9,10 +9,24 @@
 .skpc-carousel {
 	position: relative;
 	width: 100%;
+}
+
+/* Linha de navegação: [seta] [área dos slides] [seta] — setas externas. */
+.skpc-nav-row {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+/* Área que recorta os slides (o Swiper vive aqui). min-width:0 é essencial
+ * para o item flex encolher e o Swiper calcular as larguras corretamente. */
+.skpc-viewport {
+	flex: 1 1 auto;
+	min-width: 0;
 	overflow: hidden;
 }
 
-.skpc-carousel .swiper-wrapper {
+.skpc-viewport .swiper-wrapper {
 	box-sizing: border-box;
 }
 
@@ -26,7 +40,8 @@
 	flex-direction: column;
 	height: 100%;
 	background: var(--skpc-card-bg, #ffffff);
-	border-radius: var(--skpc-card-radius, 10px);
+	border-radius: var(--skpc-card-radius, 12px);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
 	overflow: hidden;
 	box-sizing: border-box;
 }
@@ -50,7 +65,6 @@
 	width: 100%;
 	height: var(--skpc-img-height, 200px);
 	object-fit: var(--skpc-img-fit, cover);
-	aspect-ratio: 4 / 3;
 }
 
 .skpc-badge {
@@ -88,10 +102,9 @@
 }
 
 /*
- * Preços: o tamanho/peso base ficam no contêiner para que o controle de
- * Tipografia (que mira .skpc-card__prices) seja herdado por todos os preços.
- * Os modificadores usam em para preservar a hierarquia (riscado menor, promo
- * maior) de forma relativa ao tamanho definido no controle.
+ * Preços: tamanho/peso base no contêiner para que a Tipografia (que mira
+ * .skpc-card__prices) seja herdada por todos os preços. Os modificadores usam
+ * em para preservar a hierarquia (riscado menor, promo maior) de forma relativa.
  */
 .skpc-card__prices {
 	display: flex;
@@ -120,10 +133,59 @@
 	text-decoration: none;
 }
 
+/* Setas externas (item flex). Fundo transparente por padrão = visual clean. */
+.skpc-arrow {
+	flex: 0 0 auto;
+	width: var(--skpc-nav-size, 34px);
+	height: var(--skpc-nav-size, 34px);
+	padding: 0;
+	margin: 0;
+	border: none;
+	border-radius: 50%;
+	background: var(--skpc-nav-bg, transparent);
+	color: var(--skpc-nav-color, #8a8f98);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.skpc-arrow::before {
+	content: '';
+	width: 40%;
+	height: 40%;
+	border-top: 2px solid currentColor;
+	border-right: 2px solid currentColor;
+}
+
+.skpc-arrow--prev::before {
+	transform: rotate(-135deg);
+	margin-left: 25%;
+}
+
+.skpc-arrow--next::before {
+	transform: rotate(45deg);
+	margin-right: 25%;
+}
+
+.skpc-arrow:hover {
+	opacity: 0.7;
+}
+
+.skpc-arrow.swiper-button-disabled {
+	opacity: 0.3;
+	cursor: default;
+}
+
 /* Paginação (dots) */
+.skpc-pagination {
+	text-align: center;
+	margin-top: 12px;
+}
+
 .skpc-carousel .swiper-pagination {
 	position: static;
-	margin-top: 12px;
 }
 
 .skpc-carousel .swiper-pagination-bullet {
@@ -133,56 +195,6 @@
 
 .skpc-carousel .swiper-pagination-bullet-active {
 	background: var(--skpc-dot-active, #1a1a1a);
-}
-
-/* Setas */
-.skpc-arrow {
-	position: absolute;
-	top: calc(var(--skpc-img-height, 200px) / 2);
-	transform: translateY(-50%);
-	z-index: 5;
-	width: 40px;
-	height: 40px;
-	border: none;
-	border-radius: 50%;
-	background: rgba(255, 255, 255, 0.9);
-	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-	color: var(--skpc-nav-color, #1a1a1a);
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.skpc-arrow::before {
-	content: '';
-	width: 10px;
-	height: 10px;
-	border-top: 2px solid currentColor;
-	border-right: 2px solid currentColor;
-}
-
-.skpc-arrow--prev {
-	left: 8px;
-}
-
-.skpc-arrow--prev::before {
-	transform: rotate(-135deg);
-	margin-left: 4px;
-}
-
-.skpc-arrow--next {
-	right: 8px;
-}
-
-.skpc-arrow--next::before {
-	transform: rotate(45deg);
-	margin-right: 4px;
-}
-
-.skpc-arrow.swiper-button-disabled {
-	opacity: 0.35;
-	cursor: default;
 }
 
 /* Estado (carregando/vazio/aviso) */

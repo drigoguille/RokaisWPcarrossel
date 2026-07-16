@@ -195,7 +195,10 @@
 			}
 		}
 
-		return new window.Swiper( this.el, opts );
+		// O Swiper vive na área de recorte (.skpc-viewport); as setas ficam fora
+		// dela, na .skpc-nav-row, para não sobrepor nem serem cortadas.
+		var viewport = this.el.querySelector( '.skpc-viewport' ) || this.el;
+		return new window.Swiper( viewport, opts );
 	};
 
 	Carousel.prototype.render = function ( items ) {
