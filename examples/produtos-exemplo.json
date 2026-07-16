@@ -1,0 +1,139 @@
+{
+  "produtos": [
+    {
+      "imagem": "https://picsum.photos/seed/rk01/600/450",
+      "titulo": "Fone de Ouvido Bluetooth",
+      "descricao": "Cancelamento de ruído e até 30h de bateria.",
+      "preco": "299,90",
+      "promocao": "199,90",
+      "link": "https://loja.exemplo.com/p/fone-bluetooth",
+      "selo": ""
+    },
+    {
+      "imagem": "https://picsum.photos/seed/rk02/600/450",
+      "titulo": "Smartwatch Fitness",
+      "descricao": "Monitor de batimentos, GPS e resistência à água.",
+      "preco": "899,00",
+      "promocao": "649,90",
+      "link": "https://loja.exemplo.com/p/smartwatch",
+      "selo": ""
+    },
+    {
+      "imagem": "https://picsum.photos/seed/rk03/600/450",
+      "titulo": "Cafeteira Expresso",
+      "descricao": "Pressão de 15 bar para um café cremoso.",
+      "preco": "1.299,90",
+      "promocao": "",
+      "link": "https://loja.exemplo.com/p/cafeteira",
+      "selo": ""
+    },
+    {
+      "imagem": "https://picsum.photos/seed/rk04/600/450",
+      "titulo": "Teclado Mecânico RGB",
+      "descricao": "Switches azuis e iluminação personalizável.",
+      "preco": "459,90",
+      "promocao": "379,90",
+      "link": "https://loja.exemplo.com/p/teclado-mecanico",
+      "selo": ""
+    },
+    {
+      "imagem": "https://picsum.photos/seed/rk05/600/450",
+      "titulo": "Mouse Gamer 16000 DPI",
+      "descricao": "Sensor óptico de alta precisão e 7 botões.",
+      "preco": "189,90",
+      "promocao": "",
+      "link": "https://loja.exemplo.com/p/mouse-gamer",
+      "selo": ""
+    },
+    {
+      "imagem": "https://picsum.photos/seed/rk06/600/450",
+      "titulo": "Caixa de Som Portátil",
+      "descricao": "Bluetooth 5.0, à prova d'água, som 360°.",
+      "preco": "349,00",
+      "promocao": "249,00",
+      "link": "https://loja.exemplo.com/p/caixa-de-som",
+      "selo": ""
+    },
+    {
+      "imagem": "https://picsum.photos/seed/rk07/600/450",
+      "titulo": "Câmera de Segurança Wi-Fi",
+      "descricao": "Full HD, visão noturna e alerta no celular.",
+      "preco": "279,90",
+      "promocao": "199,90",
+      "link": "https://loja.exemplo.com/p/camera-wifi",
+      "selo": "Frete grátis"
+    },
+    {
+      "imagem": "https://picsum.photos/seed/rk08/600/450",
+      "titulo": "Air Fryer 5L",
+      "descricao": "Fritadeira sem óleo com painel digital.",
+      "preco": "699,90",
+      "promocao": "499,90",
+      "link": "https://loja.exemplo.com/p/air-fryer",
+      "selo": ""
+    },
+    {
+      "imagem": "https://picsum.photos/seed/rk09/600/450",
+      "titulo": "Notebook Ultrafino 14\"",
+      "descricao": "16GB RAM, SSD 512GB e tela Full HD.",
+      "preco": "3.999,00",
+      "promocao": "3.499,00",
+      "link": "https://loja.exemplo.com/p/notebook-ultrafino",
+      "selo": ""
+    },
+    {
+      "imagem": "https://picsum.photos/seed/rk10/600/450",
+      "titulo": "Smart TV 50\" 4K",
+      "descricao": "HDR, Wi-Fi e sistema smart integrado.",
+      "preco": "2.799,00",
+      "promocao": "",
+      "link": "https://loja.exemplo.com/p/smart-tv-50",
+      "selo": ""
+    },
+    {
+      "imagem": "https://picsum.photos/seed/rk11/600/450",
+      "titulo": "Aspirador Robô",
+      "descricao": "Mapeamento inteligente e controle por app.",
+      "preco": "1.599,90",
+      "promocao": "1.199,90",
+      "link": "https://loja.exemplo.com/p/aspirador-robo",
+      "selo": ""
+    },
+    {
+      "imagem": "https://picsum.photos/seed/rk12/600/450",
+      "titulo": "Kindle Leitor Digital",
+      "descricao": "Tela antirreflexo e semanas de bateria.",
+      "preco": "549,00",
+      "promocao": "",
+      "link": "https://loja.exemplo.com/p/kindle",
+      "selo": "Novo"
+    },
+    {
+      "imagem": "https://picsum.photos/seed/rk13/600/450",
+      "titulo": "Carregador Portátil 20000mAh",
+      "descricao": "Carga rápida para dois aparelhos ao mesmo tempo.",
+      "preco": "159,90",
+      "promocao": "119,90",
+      "link": "https://loja.exemplo.com/p/powerbank",
+      "selo": ""
+    },
+    {
+      "imagem": "https://picsum.photos/seed/rk14/600/450",
+      "titulo": "Ventilador de Torre",
+      "descricao": "Oscilante, silencioso e com controle remoto.",
+      "preco": "389,90",
+      "promocao": "",
+      "link": "https://loja.exemplo.com/p/ventilador-torre",
+      "selo": ""
+    },
+    {
+      "imagem": "https://picsum.photos/seed/rk15/600/450",
+      "titulo": "Mochila Antifurto",
+      "descricao": "Compartimento para notebook e porta USB.",
+      "preco": "229,90",
+      "promocao": "179,90",
+      "link": "https://loja.exemplo.com/p/mochila-antifurto",
+      "selo": ""
+    }
+  ]
+}

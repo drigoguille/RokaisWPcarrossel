@@ -41,7 +41,7 @@ $rid = Get-Random
 $stage = Join-Path (Join-Path $env:TEMP ("skpc_rel_" + $rid)) "rokais-carrossel-wp"
 New-Item -ItemType Directory -Force $stage | Out-Null
 
-$excludeNames = @("ARQUIVOS EXTRAS", ".git", "dist", ".claude")
+$excludeNames = @("ARQUIVOS EXTRAS", ".git", "dist", ".claude", "examples")
 $excludeExt = @(".zip", ".ps1", ".md")
 Get-ChildItem -Path $root -Force | Where-Object {
     $excludeNames -notcontains $_.Name -and $excludeExt -notcontains $_.Extension
