@@ -281,20 +281,37 @@
 			return;
 		}
 		instances.forEach( function ( inst ) {
-			if ( inst.live ) {
+			if ( inst.live && ! isEditMode() ) {
 				inst.poll();
 			}
 		} );
 	} );
 
-	if ( window.elementorFrontend && window.elementorFrontend.hooks ) {
-		window.elementorFrontend.hooks.addAction( 'frontend/element_ready/skpc_carousel.default', function ( $scope ) {
-			var root = $scope && $scope[ 0 ] ? $scope[ 0 ] : document;
-			var el = root.classList && root.classList.contains( 'skpc-carousel' ) ? root : root.querySelector( '.skpc-carousel' );
-			initEl( el );
-		} );
+	function onElementReady( $scope ) {
+		var root = ( $scope && $scope[ 0 ] ) ? $scope[ 0 ] : document;
+		var el = ( root.classList && root.classList.contains( 'skpc-carousel' ) )
+			? root
+			: ( root.querySelector ? root.querySelector( '.skpc-carousel' ) : null );
+		initEl( el );
 	}
 
+	function registerElementorHook() {
+		if ( window.elementorFrontend && window.elementorFrontend.hooks ) {
+			window.elementorFrontend.hooks.addAction( 'frontend/element_ready/skpc_carousel.default', onElementReady );
+		}
+	}
+
+	// No editor do Elementor os widgets são renderizados dinamicamente e o nosso
+	// script pode carregar antes do elementorFrontend. Registrar o hook em
+	// 'elementor/frontend/init' garante que ele exista e que o Swiper seja
+	// (re)inicializado a cada render/edição — o que também faz o preview refletir
+	// ao vivo as mudanças de itens/slides.
+	if ( window.jQuery ) {
+		window.jQuery( window ).on( 'elementor/frontend/init', registerElementorHook );
+	}
+	registerElementorHook(); // Caso o elementorFrontend já esteja pronto.
+
+	// Fallback para contextos sem Elementor.
 	if ( document.readyState === 'loading' ) {
 		document.addEventListener( 'DOMContentLoaded', function () {
 			initAll( document );
