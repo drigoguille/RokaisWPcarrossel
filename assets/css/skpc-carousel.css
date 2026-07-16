@@ -30,15 +30,19 @@
 	box-sizing: border-box;
 }
 
+/* Slide como flex para o cartão esticar à altura da linha (alturas iguais),
+ * garantindo que os preços possam alinhar na base sem depender de height:100%. */
 .skpc-slide {
 	height: auto;
+	display: flex;
 	box-sizing: border-box;
 }
 
 .skpc-card {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	flex: 1 1 auto;
+	min-width: 0;
 	overflow: hidden;
 	box-sizing: border-box;
 }
@@ -54,7 +58,7 @@
 .skpc-card__link {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	flex: 1 1 auto;
 	color: inherit;
 	text-decoration: none;
 }
@@ -116,7 +120,7 @@
 	align-items: baseline;
 	flex-wrap: wrap;
 	gap: 8px;
-	margin-top: auto;
+	margin-top: auto; /* base do card por padrão; ajustável pelo controle "Posição do preço". */
 	padding-top: 6px;
 	font-size: 1.05rem;
 	font-weight: 700;

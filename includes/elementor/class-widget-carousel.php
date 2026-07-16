@@ -498,6 +498,20 @@ class Widget_Carousel extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'price_position',
+			array(
+				'label'       => __( 'Posição do preço', 'sk-price-carousel' ),
+				'type'        => Controls_Manager::SELECT,
+				'default'     => 'auto',
+				'options'     => array(
+					'auto' => __( 'Fixo na base do card (alinhado)', 'sk-price-carousel' ),
+					'0'    => __( 'Logo após a descrição', 'sk-price-carousel' ),
+				),
+				'description' => __( 'Fixo na base mantém os preços alinhados entre os cards, independente do tamanho da descrição.', 'sk-price-carousel' ),
+				'selectors'   => array( '{{WRAPPER}} .skpc-card__prices' => 'margin-top: {{VALUE}};' ),
+			)
+		);
+		$this->add_control(
 			'price_color',
 			array(
 				'label'     => __( 'Cor do preço (sem promoção)', 'sk-price-carousel' ),
