@@ -39,11 +39,16 @@
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+/* Cartão (box) opcional — ligado por padrão pelo controle "Mostrar cartão"
+ * (que adiciona a classe .skpc-card-box--yes no wrapper do widget). */
+.skpc-card-box--yes .skpc-card {
 	background: var(--skpc-card-bg, #ffffff);
 	border-radius: var(--skpc-card-radius, 12px);
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
-	overflow: hidden;
-	box-sizing: border-box;
 }
 
 .skpc-card__link {

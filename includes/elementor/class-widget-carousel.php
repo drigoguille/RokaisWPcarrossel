@@ -348,11 +348,25 @@ class Widget_Carousel extends Widget_Base {
 			)
 		);
 		$this->add_control(
+			'show_card',
+			array(
+				'label'        => __( 'Mostrar cartão', 'sk-price-carousel' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => __( 'Sim', 'sk-price-carousel' ),
+				'label_off'    => __( 'Não', 'sk-price-carousel' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+				'prefix_class' => 'skpc-card-box--',
+				'description'  => __( 'Liga/desliga o fundo, a borda e a sombra de cada item.', 'sk-price-carousel' ),
+			)
+		);
+		$this->add_control(
 			'card_bg',
 			array(
 				'label'     => __( 'Fundo', 'sk-price-carousel' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array( '{{WRAPPER}}' => '--skpc-card-bg: {{VALUE}};' ),
+				'condition' => array( 'show_card' => 'yes' ),
 			)
 		);
 		$this->add_control(
@@ -362,6 +376,7 @@ class Widget_Carousel extends Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'range'      => array( 'px' => array( 'min' => 0, 'max' => 40 ) ),
 				'selectors'  => array( '{{WRAPPER}}' => '--skpc-card-radius: {{SIZE}}px;' ),
+				'condition'  => array( 'show_card' => 'yes' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -376,15 +391,17 @@ class Widget_Carousel extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			array(
-				'name'     => 'card_border',
-				'selector' => '{{WRAPPER}} .skpc-card',
+				'name'      => 'card_border',
+				'selector'  => '{{WRAPPER}} .skpc-card',
+				'condition' => array( 'show_card' => 'yes' ),
 			)
 		);
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			array(
-				'name'     => 'card_shadow',
-				'selector' => '{{WRAPPER}} .skpc-card',
+				'name'      => 'card_shadow',
+				'selector'  => '{{WRAPPER}} .skpc-card',
+				'condition' => array( 'show_card' => 'yes' ),
 			)
 		);
 		$this->end_controls_section();
