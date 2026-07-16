@@ -1,26 +1,12 @@
 /*
  * SK Carrossel de Preços — estilos do frontend.
  * As cores/tamanhos vêm de CSS custom properties definidas por instância pelo
- * Elementor ({{WRAPPER}}), com fallbacks aqui para renderizar sem configuração.
+ * Elementor no wrapper (.elementor-element-XXX). Os padrões ficam no próprio
+ * var(--x, fallback) — NÃO em .skpc-carousel — senão sobrescreveriam os
+ * controles (a variável do ancestral mais próximo venceria).
  */
 
 .skpc-carousel {
-	--skpc-card-bg: #ffffff;
-	--skpc-card-radius: 10px;
-	--skpc-img-height: 200px;
-	--skpc-img-fit: cover;
-	--skpc-title-color: #1a1a1a;
-	--skpc-desc-color: #555555;
-	--skpc-price-color: #1a1a1a;
-	--skpc-full-color: #8a8a8a;
-	--skpc-sale-color: #b32d2e;
-	--skpc-badge-bg: #b32d2e;
-	--skpc-badge-color: #ffffff;
-	--skpc-nav-color: #1a1a1a;
-	--skpc-dot-color: #c9c9c9;
-	--skpc-dot-active: #1a1a1a;
-	--skpc-gap: 16px;
-
 	position: relative;
 	width: 100%;
 	overflow: hidden;
@@ -39,8 +25,8 @@
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	background: var(--skpc-card-bg);
-	border-radius: var(--skpc-card-radius);
+	background: var(--skpc-card-bg, #ffffff);
+	border-radius: var(--skpc-card-radius, 10px);
 	overflow: hidden;
 	box-sizing: border-box;
 }
@@ -62,8 +48,8 @@
 .skpc-card__img {
 	display: block;
 	width: 100%;
-	height: var(--skpc-img-height);
-	object-fit: var(--skpc-img-fit);
+	height: var(--skpc-img-height, 200px);
+	object-fit: var(--skpc-img-fit, cover);
 	aspect-ratio: 4 / 3;
 }
 
@@ -71,8 +57,8 @@
 	position: absolute;
 	top: 10px;
 	right: 10px;
-	background: var(--skpc-badge-bg);
-	color: var(--skpc-badge-color);
+	background: var(--skpc-badge-bg, #b32d2e);
+	color: var(--skpc-badge-color, #ffffff);
 	font-size: 12px;
 	font-weight: 700;
 	line-height: 1;
@@ -90,17 +76,23 @@
 
 .skpc-card__title {
 	margin: 0;
-	color: var(--skpc-title-color);
+	color: var(--skpc-title-color, #1a1a1a);
 	font-size: 1rem;
 	line-height: 1.3;
 }
 
 .skpc-card__desc {
-	color: var(--skpc-desc-color);
+	color: var(--skpc-desc-color, #555555);
 	font-size: 0.875rem;
 	line-height: 1.4;
 }
 
+/*
+ * Preços: o tamanho/peso base ficam no contêiner para que o controle de
+ * Tipografia (que mira .skpc-card__prices) seja herdado por todos os preços.
+ * Os modificadores usam em para preservar a hierarquia (riscado menor, promo
+ * maior) de forma relativa ao tamanho definido no controle.
+ */
 .skpc-card__prices {
 	display: flex;
 	align-items: baseline;
@@ -108,26 +100,24 @@
 	gap: 8px;
 	margin-top: auto;
 	padding-top: 6px;
+	font-size: 1.05rem;
+	font-weight: 700;
 }
 
 .skpc-price {
-	color: var(--skpc-price-color);
-	font-weight: 700;
-	font-size: 1.05rem;
+	color: var(--skpc-price-color, #1a1a1a);
 }
 
 .skpc-price--full {
-	color: var(--skpc-full-color);
-	font-weight: 400;
-	font-size: 0.9rem;
+	color: var(--skpc-full-color, #8a8a8a);
+	font-size: 0.8em;
 	text-decoration: line-through;
 }
 
 .skpc-price--sale {
-	color: var(--skpc-sale-color);
+	color: var(--skpc-sale-color, #b32d2e);
+	font-size: 1.15em;
 	text-decoration: none;
-	font-weight: 800;
-	font-size: 1.15rem;
 }
 
 /* Paginação (dots) */
@@ -137,18 +127,18 @@
 }
 
 .skpc-carousel .swiper-pagination-bullet {
-	background: var(--skpc-dot-color);
+	background: var(--skpc-dot-color, #c9c9c9);
 	opacity: 1;
 }
 
 .skpc-carousel .swiper-pagination-bullet-active {
-	background: var(--skpc-dot-active);
+	background: var(--skpc-dot-active, #1a1a1a);
 }
 
 /* Setas */
 .skpc-arrow {
 	position: absolute;
-	top: calc(var(--skpc-img-height) / 2);
+	top: calc(var(--skpc-img-height, 200px) / 2);
 	transform: translateY(-50%);
 	z-index: 5;
 	width: 40px;
@@ -157,7 +147,7 @@
 	border-radius: 50%;
 	background: rgba(255, 255, 255, 0.9);
 	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-	color: var(--skpc-nav-color);
+	color: var(--skpc-nav-color, #1a1a1a);
 	cursor: pointer;
 	display: flex;
 	align-items: center;
@@ -199,7 +189,7 @@
 .skpc-status {
 	padding: 24px;
 	text-align: center;
-	color: var(--skpc-desc-color);
+	color: var(--skpc-desc-color, #555555);
 	font-size: 0.95rem;
 }
 
