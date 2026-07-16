@@ -315,18 +315,18 @@ class Updater {
 		$response = wp_remote_get( $url, $args );
 		if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
 			// Cache negativo curto para não martelar a API do GitHub.
-			set_transient( $this->cache_key, 'invalid', 2 * HOUR_IN_SECONDS );
+			set_transient( $this->cache_key, 'invalid', 15 * MINUTE_IN_SECONDS );
 			return false;
 		}
 
 		$data = json_decode( wp_remote_retrieve_body( $response ) );
 		if ( ! is_object( $data ) || empty( $data->tag_name ) ) {
-			set_transient( $this->cache_key, 'invalid', 2 * HOUR_IN_SECONDS );
+			set_transient( $this->cache_key, 'invalid', 15 * MINUTE_IN_SECONDS );
 			return false;
 		}
 
 		$remote = $this->normalize_release( $data );
-		set_transient( $this->cache_key, $remote, 12 * HOUR_IN_SECONDS );
+		set_transient( $this->cache_key, $remote, HOUR_IN_SECONDS );
 		return $remote;
 	}
 

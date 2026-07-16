@@ -61,6 +61,29 @@
 	max-width: 900px;
 }
 
+.skpc-detect-status {
+	display: block;
+	margin-top: 8px;
+	font-size: 12px;
+}
+
+.skpc-detect-ok {
+	color: #1a7f37;
+	font-weight: 600;
+}
+
+.skpc-detect-err {
+	color: #b32d2e;
+	font-weight: 600;
+}
+
+.skpc-detect-status code {
+	font-size: 11px;
+	background: #f0f0f1;
+	padding: 1px 5px;
+	border-radius: 3px;
+}
+
 .skpc-preview {
 	display: flex;
 	flex-wrap: wrap;

@@ -107,6 +107,81 @@
 	}
 
 	// --- Detectar colunas ---------------------------------------------------
+	// Sinônimos por campo do schema (para casar nomes de coluna automaticamente).
+	var FIELD_SYNONYMS = {
+		image: [ 'image', 'imagem', 'img', 'foto', 'photo', 'picture', 'thumb', 'thumbnail', 'capa' ],
+		title: [ 'title', 'titulo', 'nome', 'name', 'produto', 'product' ],
+		description: [ 'description', 'descricao', 'desc', 'detalhe', 'detalhes', 'texto', 'resumo' ],
+		price: [ 'price', 'preco', 'valor', 'value', 'amount', 'precocheio', 'fullprice', 'de' ],
+		sale_price: [ 'saleprice', 'sale', 'promocao', 'promo', 'oferta', 'desconto', 'por', 'precopromocional' ],
+		url: [ 'url', 'link', 'href', 'permalink', 'pagina' ],
+		badge: [ 'badge', 'selo', 'tag', 'label', 'etiqueta', 'flag' ]
+	};
+
+	function normalizeKey( s ) {
+		return String( s == null ? '' : s ).toLowerCase().replace( /[\s_\-]+/g, '' );
+	}
+
+	function autoMap( cols ) {
+		var count = 0;
+		Object.keys( FIELD_SYNONYMS ).forEach( function ( field ) {
+			var $input = $( '#skpc-map-' + field );
+			if ( ! $input.length || $input.val() ) {
+				return; // Não sobrescreve o que o usuário já preencheu.
+			}
+			var syns = FIELD_SYNONYMS[ field ].map( normalizeKey );
+			var best = null;
+			// 1) match exato pelo nome normalizado.
+			cols.forEach( function ( c ) {
+				if ( ! best && syns.indexOf( normalizeKey( c ) ) !== -1 ) {
+					best = c;
+				}
+			} );
+			// 2) match parcial (a coluna contém o sinônimo ou vice-versa).
+			if ( ! best ) {
+				cols.forEach( function ( c ) {
+					if ( best ) {
+						return;
+					}
+					var nc = normalizeKey( c );
+					for ( var i = 0; i < syns.length; i++ ) {
+						if ( nc.indexOf( syns[ i ] ) !== -1 || syns[ i ].indexOf( nc ) !== -1 ) {
+							best = c;
+							break;
+						}
+					}
+				} );
+			}
+			if ( best ) {
+				$input.val( best );
+				count++;
+			}
+		} );
+		return count;
+	}
+
+	function showDetectStatus( $btn, cols, filled, errorMsg ) {
+		var $status = $( '#skpc-detect-status' );
+		if ( ! $status.length ) {
+			$status = $( '<span id="skpc-detect-status" class="skpc-detect-status"></span>' );
+			$btn.after( $status );
+		}
+		if ( errorMsg ) {
+			$status.html( '<span class="skpc-detect-err">' + escapeHtml( errorMsg ) + '</span>' );
+			return;
+		}
+		var n = cols ? cols.length : 0;
+		var msg = n + ' coluna(s) detectada(s)';
+		if ( filled ) {
+			msg += ' — ' + filled + ' campo(s) preenchido(s) automaticamente';
+		}
+		var html = '<span class="skpc-detect-ok">' + escapeHtml( msg ) + '</span>';
+		if ( n ) {
+			html += ' <code>' + cols.map( escapeHtml ).join( ', ' ) + '</code>';
+		}
+		$status.html( html );
+	}
+
 	function onDetect() {
 		var $btn = $( this );
 		var $form = $( '#skpc-connection-form' );
@@ -114,13 +189,16 @@
 		ajax( 'skpc_detect_columns', collectForm( $form ) )
 			.done( function ( res ) {
 				if ( res && res.success ) {
-					fillDatalist( '#skpc-columns-list', res.data.columns );
+					var cols = res.data.columns || [];
+					fillDatalist( '#skpc-columns-list', cols );
+					var filled = autoMap( cols );
+					showDetectStatus( $btn, cols, filled );
 				} else {
-					window.alert( ( res && res.data && res.data.message ) || cfg.i18n.error );
+					showDetectStatus( $btn, null, 0, ( res && res.data && res.data.message ) || cfg.i18n.error );
 				}
 			} )
 			.fail( function () {
-				window.alert( cfg.i18n.error );
+				showDetectStatus( $btn, null, 0, cfg.i18n.error );
 			} )
 			.always( function () {
 				clearBusy( $btn );
