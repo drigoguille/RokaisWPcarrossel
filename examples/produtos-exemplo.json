@@ -1,7 +1,7 @@
 {
   "produtos": [
     {
-      "imagem": "https://picsum.photos/seed/mk01/600/450",
+      "imagem": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Rice_Grains_.png",
       "titulo": "Arroz Branco Tipo 1 5kg",
       "descricao": "Grãos selecionados, soltinho no preparo.",
       "preco": "29,90",
@@ -10,7 +10,7 @@
       "selo": ""
     },
     {
-      "imagem": "https://picsum.photos/seed/mk02/600/450",
+      "imagem": "https://images.openfoodfacts.org/images/products/789/607/080/0014/front_pt.3.400.jpg",
       "titulo": "Feijão Carioca 1kg",
       "descricao": "Tipo 1, cozimento rápido.",
       "preco": "8,99",
@@ -19,7 +19,7 @@
       "selo": ""
     },
     {
-      "imagem": "https://picsum.photos/seed/mk03/600/450",
+      "imagem": "https://images.openfoodfacts.org/images/products/789/191/000/0197/front_pt.6.400.jpg",
       "titulo": "Açúcar Refinado 1kg",
       "descricao": "Ideal para o dia a dia e receitas.",
       "preco": "4,49",
@@ -28,7 +28,7 @@
       "selo": ""
     },
     {
-      "imagem": "https://picsum.photos/seed/mk04/600/450",
+      "imagem": "https://images.openfoodfacts.org/images/products/560/108/202/2758/front_pt.6.400.jpg",
       "titulo": "Café Torrado e Moído 500g",
       "descricao": "Torra média, aroma intenso.",
       "preco": "18,90",
@@ -37,16 +37,16 @@
       "selo": "Oferta"
     },
     {
-      "imagem": "https://picsum.photos/seed/mk05/600/450",
-      "titulo": "Óleo de Soja 900ml",
-      "descricao": "Tipo 1, para cozinhar e fritar.",
-      "preco": "7,99",
-      "promocao": "",
-      "link": "https://mercado.exemplo.com/p/oleo-soja",
+      "imagem": "https://images.openfoodfacts.org/images/products/560/839/442/1019/front_es.39.400.jpg",
+      "titulo": "Óleo de Cozinha 500ml",
+      "descricao": "Para cozinhar, fritar e temperar.",
+      "preco": "9,99",
+      "promocao": "7,99",
+      "link": "https://mercado.exemplo.com/p/oleo-cozinha",
       "selo": ""
     },
     {
-      "imagem": "https://picsum.photos/seed/mk06/600/450",
+      "imagem": "https://images.openfoodfacts.org/images/products/789/100/032/5858/front_pt.34.400.jpg",
       "titulo": "Leite Integral 1L",
       "descricao": "Longa vida, caixa com 1 litro.",
       "preco": "5,49",
@@ -55,70 +55,61 @@
       "selo": ""
     },
     {
-      "imagem": "https://picsum.photos/seed/mk07/600/450",
+      "imagem": "https://images.openfoodfacts.org/images/products/789/602/220/0879/front_pt.3.400.jpg",
       "titulo": "Macarrão Espaguete 500g",
-      "descricao": "Sêmola, não empapa no cozimento.",
+      "descricao": "Sêmola de trigo, não empapa.",
       "preco": "4,99",
       "promocao": "",
       "link": "https://mercado.exemplo.com/p/macarrao-espaguete",
       "selo": ""
     },
     {
-      "imagem": "https://picsum.photos/seed/mk08/600/450",
+      "imagem": "https://images.openfoodfacts.org/images/products/345/097/012/0302/front_fr.61.400.jpg",
       "titulo": "Farinha de Trigo 1kg",
-      "descricao": "Com fermento, ideal para bolos e pães.",
+      "descricao": "Ideal para bolos, pães e massas.",
       "preco": "5,79",
       "promocao": "4,49",
       "link": "https://mercado.exemplo.com/p/farinha-trigo",
       "selo": ""
     },
     {
-      "imagem": "https://picsum.photos/seed/mk09/600/450",
-      "titulo": "Molho de Tomate 340g",
-      "descricao": "Tradicional, pronto para usar.",
-      "preco": "3,49",
-      "promocao": "2,99",
-      "link": "https://mercado.exemplo.com/p/molho-tomate",
+      "imagem": "https://images.openfoodfacts.org/images/products/848/000/023/5794/front_en.40.400.jpg",
+      "titulo": "Ketchup 390g",
+      "descricao": "Clássico, para lanches e petiscos.",
+      "preco": "6,99",
+      "promocao": "4,99",
+      "link": "https://mercado.exemplo.com/p/ketchup",
       "selo": ""
     },
     {
-      "imagem": "https://picsum.photos/seed/mk10/600/450",
-      "titulo": "Sabão em Pó 1kg",
-      "descricao": "Alto rendimento, perfume prolongado.",
-      "preco": "16,90",
-      "promocao": "12,99",
-      "link": "https://mercado.exemplo.com/p/sabao-po",
-      "selo": ""
-    },
-    {
-      "imagem": "https://picsum.photos/seed/mk11/600/450",
-      "titulo": "Papel Higiênico 12 rolos",
-      "descricao": "Folha dupla, 30m cada rolo.",
-      "preco": "24,99",
-      "promocao": "19,90",
-      "link": "https://mercado.exemplo.com/p/papel-higienico-12",
-      "selo": ""
-    },
-    {
-      "imagem": "https://picsum.photos/seed/mk12/600/450",
-      "titulo": "Detergente Líquido 500ml",
-      "descricao": "Neutro, remove gordura com facilidade.",
-      "preco": "2,99",
-      "promocao": "",
-      "link": "https://mercado.exemplo.com/p/detergente-500ml",
-      "selo": ""
-    },
-    {
-      "imagem": "https://picsum.photos/seed/mk13/600/450",
-      "titulo": "Refrigerante Cola 2L",
-      "descricao": "Geladinho, garrafa de 2 litros.",
-      "preco": "9,99",
+      "imagem": "https://images.openfoodfacts.org/images/products/789/100/041/2855/front_en.41.400.jpg",
+      "titulo": "Achocolatado em Pó 400g",
+      "descricao": "Rende um achocolatado cremoso.",
+      "preco": "9,90",
       "promocao": "7,49",
-      "link": "https://mercado.exemplo.com/p/refrigerante-cola-2l",
+      "link": "https://mercado.exemplo.com/p/achocolatado",
       "selo": ""
     },
     {
-      "imagem": "https://picsum.photos/seed/mk14/600/450",
+      "imagem": "https://images.openfoodfacts.org/images/products/560/104/530/0022/front_fr.72.400.jpg",
+      "titulo": "Refrigerante 2L",
+      "descricao": "Geladinho, garrafa de 2 litros.",
+      "preco": "8,99",
+      "promocao": "6,99",
+      "link": "https://mercado.exemplo.com/p/refrigerante-2l",
+      "selo": ""
+    },
+    {
+      "imagem": "https://images.openfoodfacts.org/images/products/789/300/039/4209/front_en.18.400.jpg",
+      "titulo": "Margarina com Sal 500g",
+      "descricao": "Cremosa, pote de 500g.",
+      "preco": "8,49",
+      "promocao": "6,99",
+      "link": "https://mercado.exemplo.com/p/margarina-500g",
+      "selo": ""
+    },
+    {
+      "imagem": "https://images.openfoodfacts.org/images/products/325/039/011/4697/front_fr.58.400.jpg",
       "titulo": "Biscoito Recheado 130g",
       "descricao": "Sabor chocolate, embalagem individual.",
       "preco": "2,49",
@@ -127,12 +118,21 @@
       "selo": "Novo"
     },
     {
-      "imagem": "https://picsum.photos/seed/mk15/600/450",
-      "titulo": "Margarina 500g",
-      "descricao": "Com sal, cremosa, pote de 500g.",
-      "preco": "8,49",
-      "promocao": "6,99",
-      "link": "https://mercado.exemplo.com/p/margarina-500g",
+      "imagem": "https://images.openfoodfacts.org/images/products/789/894/277/5321/front_en.6.400.jpg",
+      "titulo": "Suco Concentrado 500ml",
+      "descricao": "Rende até 3 litros de suco.",
+      "preco": "4,99",
+      "promocao": "3,49",
+      "link": "https://mercado.exemplo.com/p/suco-concentrado",
+      "selo": ""
+    },
+    {
+      "imagem": "https://images.openfoodfacts.org/images/products/405/648/992/0045/front_en.102.400.jpg",
+      "titulo": "Iogurte 170g",
+      "descricao": "Cremoso, ótimo para o café da manhã.",
+      "preco": "3,49",
+      "promocao": "2,99",
+      "link": "https://mercado.exemplo.com/p/iogurte",
       "selo": ""
     }
   ]
