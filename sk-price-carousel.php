@@ -3,7 +3,7 @@
  * Plugin Name:       Rokais Carrossel WP
  * Plugin URI:        https://skgrupo.com/
  * Description:       Carrossel inteligente para o Elementor com imagem, descrição, preço cheio e preço promocional. Fontes de dados: Google Sheets, JSON e MySQL, com cache automático e atualização ao vivo.
- * Version:           1.0.8
+ * Version:           1.0.9
  * Requires at least: 5.9
  * Requires PHP:      7.4
  * Author:            Rokais
@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
  * Constantes globais do plugin.
  * -----------------------------------------------------------------------------
  */
-define( 'SKPC_VERSION', '1.0.8' );
+define( 'SKPC_VERSION', '1.0.9' );
 define( 'SKPC_FILE', __FILE__ );
 define( 'SKPC_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SKPC_URL', plugin_dir_url( __FILE__ ) );

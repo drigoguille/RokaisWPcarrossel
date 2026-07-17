@@ -69,11 +69,15 @@
 	width: 100%;
 }
 
-.skpc-card__img {
+/* Especificidade alta + !important para vencer o reset comum de temas/WooCommerce
+ * (img { height: auto !important }). O valor vem do controle via CSS variable, então
+ * o !important não impede o ajuste de Altura/Ajuste no Elementor. */
+.skpc-carousel .skpc-card .skpc-card__img {
 	display: block;
 	width: 100%;
-	height: var(--skpc-img-height, 200px);
-	object-fit: var(--skpc-img-fit, cover);
+	height: var(--skpc-img-height, 200px) !important;
+	max-width: 100%;
+	object-fit: var(--skpc-img-fit, cover) !important;
 }
 
 .skpc-badge {
